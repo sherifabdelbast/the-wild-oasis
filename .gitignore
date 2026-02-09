@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Windows Zone.Identifier (from copy/paste or download in WSL)
+*:Zone.Identifier
