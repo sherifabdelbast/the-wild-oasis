@@ -1,3 +1,4 @@
+import { useCabins } from "../features/cabins/useCabins";
 import Logo from "./Logo";
 import MainNav from "./MainNav";
 import styled from "styled-components";
@@ -14,6 +15,7 @@ const StyledSidebar = styled.aside`
 `;
 
 function Sidebar() {
+  const { isLoading, error, cabins } = useCabins();
   return (
     <StyledSidebar>
       <Logo />
