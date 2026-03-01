@@ -1,4 +1,10 @@
-import { cloneElement, createContext, useContext, useState } from "react";
+import {
+  cloneElement,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
@@ -77,6 +83,17 @@ function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
 
+  useEffect(
+    function () {
+      function handleKeyDown(e) {
+        if (e.key === "Escape") close();
+      }
+      document.addEventListener("keydown", handleKeyDown);
+
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    },
+    [close],
+  );
   if (name !== openName) return null;
 
   return createPortal(
