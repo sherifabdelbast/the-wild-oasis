@@ -1,0 +1,11 @@
+feat: dashboard charts, today activity, error boundaries & polish (steps 12–16)
+
+• Charts: Sales line chart (ReCharts) and stay-duration pie chart with
+  dark mode; real data from useRecentBookings/useRecentStays
+• Today: useTodayActivity, TodayActivity list, TodayItem with Arriving/
+  Departing tags, Check in link & CheckoutButton
+• Errors: react-error-boundary in main.jsx; ErrorFallback with
+  "Something went wrong 🧐" and Try again
+• Final: Toaster formatting, route/App layout verified, lint clean
+
+Dashboard is feature-complete with stats, filters, and today’s activity.

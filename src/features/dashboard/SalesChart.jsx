@@ -26,21 +26,20 @@ const StyledSalesChart = styled(DashboardBox)`
 function SalesChart({ bookings, numDays }) {
   const { isDarkMode } = useDarkMode();
 
-  const numDaysVal = numDays ?? 7;
   const allDates = eachDayOfInterval({
-    start: subDays(new Date(), numDaysVal - 1),
+    start: subDays(new Date(), numDays - 1),
     end: new Date(),
   });
 
   const data = allDates.map((date) => {
     return {
       label: format(date, "MMM dd"),
-      totalSales: (bookings ?? [])
+      totalSales: bookings
         .filter((booking) => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.totalPrice, 0),
-      extrasSales: (bookings ?? [])
+      extrasSales: bookings
         .filter((booking) => isSameDay(date, new Date(booking.created_at)))
-        .reduce((acc, cur) => acc + (cur.extrasPrice ?? 0), 0),
+        .reduce((acc, cur) => acc + cur.extrasPrice, 0),
     };
   });
 
