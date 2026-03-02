@@ -6,12 +6,12 @@ import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
-import { useCreateCabin } from "./useCreateCabin.js";
-import { useUpdateCabin } from "./useUpdateCabin.js";
+import { useCreateCabin } from "./useCreateCabin";
+import { useEditCabin } from "./useEditCabin";
 
 function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { createCabin, isCreating } = useCreateCabin();
-  const { updateCabin, isEditing } = useUpdateCabin();
+  const { editCabin, isEditing } = useEditCabin();
 
   const isWorking = isCreating || isEditing;
   const { id: editId, ...editValues } = cabinToEdit;
@@ -24,7 +24,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
     if (isEditSession)
-      updateCabin(
+      editCabin(
         { newCabinData: { ...data, image }, id: editId },
         {
           onSuccess: () => {

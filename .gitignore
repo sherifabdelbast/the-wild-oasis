@@ -25,3 +25,9 @@ dist-ssr
 
 # Windows Zone.Identifier (from copy/paste or download in WSL)
 *:Zone.Identifier
+
+# Reference / final project (local only, do not commit)
+final-6-final/
+
+# Local implementation plan (do not commit)
+IMPLEMENTATION_PLAN.md
