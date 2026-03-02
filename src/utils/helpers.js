@@ -1,4 +1,9 @@
-import { formatDistance, parseISO, differenceInDays } from "date-fns";
+import {
+  formatDistance,
+  parseISO,
+  differenceInDays,
+  format,
+} from "date-fns";
 
 // We want to make this function work for both Date objects and strings (which come from Supabase)
 export const subtractDates = (dateStr1, dateStr2) =>
@@ -22,6 +27,9 @@ export const getToday = function (options = {}) {
   else today.setUTCHours(0, 0, 0, 0);
   return today.toISOString();
 };
+
+// Today as YYYY-MM-DD in local time (for comparing with date columns in Supabase)
+export const getTodayDateString = () => format(new Date(), "yyyy-MM-dd");
 
 export const formatCurrency = (value) =>
   new Intl.NumberFormat("en", { style: "currency", currency: "USD" }).format(
